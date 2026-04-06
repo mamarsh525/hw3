@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rick & Morty Character App</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <%- include('partials/nav') %>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Rick & Morty Character Explorer</h1>
+      <p class="subtitle">Explore characters from the hit show</p>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <h2>Search by Name</h2>
+        <p>Find your favorite Rick & Morty characters by name.</p>
+        <a href="/search-name" class="btn">Search Characters</a>
+      </div>
+
+      <div class="feature-card">
+        <h2>Search by Species</h2>
+        <p>Discover all characters of a specific species.</p>
+        <a href="/search-species" class="btn">Browse by Species</a>
+      </div>
+
+      <div class="feature-card">
+        <h2>Random Character</h2>
+        <p>See a random Rick & Morty character with one click.</p>
+        <a href="/random" class="btn">Get Random</a>
+      </div>
+
+      <div class="feature-card">
+        <h2>Locations</h2>
+        <p>Compare and contrast real locations, using the Rick and Morty API and the country-state-city package.</p>
+        <a href="/locations" class="btn">View Locations</a>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

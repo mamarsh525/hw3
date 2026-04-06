@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locations</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <%- include('partials/nav') %>
+
+  <main class="container">
+    <section class="locations-section">
+      <h1>Locations: Real vs Fictional</h1>
+      <p>Search real world countries and Rick and Morty locations using the Rick and Morty API and the country-state-city package.</p>
+
+      <form method="POST" action="/locations" class="search-form">
+        <div class="form-group">
+          <label for="searchTerm">Location Name:</label>
+          <input 
+            type="text" 
+            id="searchTerm" 
+            name="searchTerm" 
+            placeholder="e.g., Earth, United States, Cronenberg..."
+            value="<%= searchTerm %>"
+          >
+        </div>
+        <button type="submit" class="btn">Search</button>
+      </form>
+
+      <div class="button-group">
+        <a href="/locations?all=true" class="btn btn-secondary">Show All</a>
+      </div>
+
+      <% if (error) { %>
+        <div class="alert alert-error">
+          <%= error %>
+        </div>
+      <% } %>
+
+      <% if (countries !== null || rickmortylocs !== null) { %>
+        <div class="locations-compare">
+          <!-- Real Countries Section -->
+          <div class="locations-column">
+            <h2>Real Countries</h2>
+            <% if (countries && countries.length > 0) { %>
+              <p class="count">(<%= countries.length %> found)</p>
+              <div class="grid">
+                <% countries.forEach(country => { %>
+                  <div class="location-card real">
+                    <h3><%= country.name %></h3>
+                    <p><%= country.isoCode %></p>
+                  </div>
+                <% }); %>
+              </div>
+            <% } else { %>
+              <p class="no-results">No countries found</p>
+            <% } %>
+          </div>
+
+          <!-- Rick and Morty Locations Section -->
+          <div class="locations-column">
+            <h2>Rick and Morty Locations</h2>
+            <% if (rickmortylocs && rickmortylocs.length > 0) { %>
+              <p class="count">(<%= rickmortylocs.length %> found)</p>
+              <div class="grid">
+                <% rickmortylocs.forEach(location => { %>
+                  <div class="location-card fictional">
+                    <h3><%= location.name %></h3>
+                    <p><%= location.type %></p>
+                  </div>
+                <% }); %>
+              </div>
+            <% } else { %>
+              <p class="no-results">No locations found</p>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
