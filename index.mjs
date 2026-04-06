@@ -3,9 +3,9 @@ import axios from 'axios';
 import csc from 'country-state-city';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Middleware
+// Middleware and Configuration
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
